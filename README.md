@@ -1,23 +1,23 @@
 # Feather
 
-Ứng dụng quản lý và ký (sign) file `.ipa` trực tiếp trên thiết bị iOS/iPadOS (và Mac Catalyst), sử dụng chứng chỉ thuộc Apple Developer Program (phiên bản dự án `2.9.0`).
+An on-device iOS/iPadOS (and Mac Catalyst) application manager and `.ipa` signer (`v2.9.0`) using certificates from the Apple Developer Program.
 
-> Fork từ [claration/feather](https://github.com/claration/feather) (`khcrysalis/Feather`). Xem chi tiết giấy phép sử dụng trong file [LICENSE](LICENSE).
+> Forked from [claration/feather](https://github.com/claration/feather) (`khcrysalis/Feather`). See [LICENSE](LICENSE) for full license details.
 
-## Tính năng chính
+## Features
 
-- Quản lý kho ứng dụng / nguồn AltSource (`AltSourceKit`, `app-repo.json`).
-- Nhập, quản lý và ký file `.ipa` trực tiếp trên thiết bị với nhân ký `Zsign` (`Zsign-Package`).
-- Hỗ trợ giao tiếp và cài đặt ứng dụng trên thiết bị iOS qua `IDeviceKitten` (`IDeviceKit`).
-- Hỗ trợ đa nền tảng mục tiêu: `iphoneos` và `maccatalyst`.
+- Manage AltSource repositories and app sources (`AltSourceKit`, `app-repo.json`).
+- Import, inspect, and sign `.ipa` packages directly on-device powered by `Zsign` (`Zsign-Package`).
+- Install and communicate with iOS devices via `IDeviceKitten` (`IDeviceKit`).
+- Targets both `iphoneos` and `maccatalyst`.
 
-## Công nghệ & Yêu cầu
+## Tech Stack & Requirements
 
-- **Ngôn ngữ**: Swift / C++ (Zsign)
-- **Framework & Module nội bộ**: `AltSourceKit`, `NimbleKit`, submodule `Zsign`, submodule `IDeviceKitten`
-- **Yêu cầu**: iOS 16.0+ / Mac Catalyst, Xcode, Git submodules, `jq` (nếu build bằng `Makefile`)
+- **Languages**: Swift / C++ (`Zsign`)
+- **Modules & Submodules**: `AltSourceKit`, `NimbleKit`, `Zsign`, `IDeviceKitten`
+- **Requirements**: iOS 16.0+ / Mac Catalyst, Xcode, Git submodules, `jq` (when building via `Makefile`)
 
-## Cấu trúc thư mục
+## Project Structure
 
 ```text
 Feather/
@@ -41,21 +41,21 @@ Feather/
 └── IDeviceKitten/       (Git submodule)
 ```
 
-## Hướng dẫn cài đặt & chạy
+## Getting Started
 
-1. Clone repository kèm đầy đủ submodules:
+1. Clone the repository recursively with all submodules:
    ```bash
    git clone --recursive https://github.com/LamPPKK/feather.git
    cd feather
    ```
-   *(Nếu đã clone trước đó mà chưa có submodules, chạy: `git submodule update --init --recursive`)*
-2. Mở bằng Xcode:
+   *(If already cloned without submodules, run `git submodule update --init --recursive`.)*
+2. Open the workspace in Xcode:
    ```bash
    open Feather.xcworkspace
    ```
-   Hoặc build qua `Makefile` (yêu cầu đã cài `xcodebuild` và `jq`):
+   Or build using the `Makefile` (requires `xcodebuild` and `jq`):
    ```bash
    make iphoneos
-   # hoặc cho Mac Catalyst:
+   # or for Mac Catalyst:
    make maccatalyst
    ```
